@@ -1,26 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import logo from "./logo.svg";
+import "./App.css";
 
 const App: React.FC = () => {
+  const [userText, setUserText] = useState("");
+
+  const updateUserText = (event: React.FormEvent<HTMLInputElement>) => {
+    setUserText(event.currentTarget.value);
+    console.log("current userText", userText);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h2>Track your pace</h2>
+      <input value={userText} onChange={updateUserText} />
     </div>
   );
-}
+};
 
 export default App;
